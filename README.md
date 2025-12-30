@@ -3,9 +3,8 @@ This is my First Repository
 Author - Vidhi Sontakke
 
 
-## 🎮 Guess Game (Java)
-
 ```java
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -15,16 +14,35 @@ class GuessGame {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
 
-        int computerNumber = rand.nextInt(10) + 1;
+        int computerNumber = rand.nextInt(100) + 1;
+        int guess;
+        int chances = 5;
 
-        System.out.print("Guess a number between 1 to 10: ");
-        int userGuess = sc.nextInt();
+        System.out.println(" Guess the Number Game");
+        System.out.println("You have 5 chances to guess a number between 1 to 100");
 
-        if (userGuess == computerNumber) {
-            System.out.println("🎉 You Win! Correct Guess");
-        } else {
-            System.out.println("❌ Wrong Guess");
-            System.out.println("Computer number was: " + computerNumber);
+        for (int i = 1; i <= chances; i++) {
+            System.out.print("Chance " + i + " - Enter your guess: ");
+            guess = sc.nextInt();
+
+            if (guess == computerNumber) {
+                System.out.println(" Correct! You Win.");
+                break;
+            } 
+            else if (guess > computerNumber) {
+                System.out.println("Too High");
+            } 
+            else {
+                System.out.println("Too Low");
+            }
+
+            if (i == chances) {
+                System.out.println("Game Over!");
+                System.out.println("Correct number was: " + computerNumber);
+            }
         }
     }
 }
+
+
+
